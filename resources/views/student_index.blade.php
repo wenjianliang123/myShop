@@ -1,5 +1,5 @@
 <form action="{{url('/student/index')}}" method="get">
-    姓名：<input type="text" name="find_name" id="" value="">
+    姓名：<input type="text" name="find_name" id="" value="{{$find_name}}">
     <input type="submit" value="搜索">
 </form>
 <table border="1">
