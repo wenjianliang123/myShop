@@ -37,6 +37,11 @@ class studentController extends Controller
             $student_info=DB::table('student')->paginate(1);
         }
 
+        $stu_info=$student_info->toArray();
+        $stu_info=json_encode($stu_info);
+        $redis->set('stu_info',$stu_info,60);
+//        dd($student_info);
+//        die;
 //        dd($student_info);
         return view('student_index',['data'=>$student_info,'find_name'=>$req['find_name']]);
     }

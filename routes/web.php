@@ -17,13 +17,20 @@ Route::get('/', function () {
 
 Route::get('/user','userController@index');
 
+//学生列表中间件
+Route::middleware(['stu'])->group(function(){
+    Route::get('/student/index','studentController@index');//学生增删改查搜索分页redis 列表页面
+});
+
+//学生增删改查搜索分页redis缓存
 Route::prefix('/student')->group(function(){
     Route::get('/add','studentController@add');
-    Route::get('/index','studentController@index');
     Route::post('/do_add','studentController@do_add');
     Route::get('/edit/{id}','studentController@edit');
     Route::get('/del/{id}','studentController@del');
     Route::post('/update','studentController@update');
 });
 
+//登录
+Route::get('/register','studentController@register');
 

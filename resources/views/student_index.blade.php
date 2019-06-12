@@ -10,7 +10,7 @@
     <td>性别</td>
     <td>操作</td>
 </tr>
-    @if($data)
+        @if($data)
         @foreach($data as $v)
     <tr>
         <td>{{$v->student_id}}</td>
