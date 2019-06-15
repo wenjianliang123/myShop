@@ -56,6 +56,7 @@ class Login extends Controller
          * 如果想从 Session 中删除所有数据，可以使用 flush 方法：
          * */
 //        $request->session()->flush();//删除所有session
+        //删除指定的session的key值
         $request->session()->forget('user_name');
         return redirect('/');
     }
