@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Login
+class limit_time_edit_goods
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,17 @@ class Login
      */
     public function handle($request, Closure $next)
     {
-        /*echo "这是登录前置中间件";
-//        var_dump(session('user_name'));
-//        die();
+        echo "这是商品修改前置中间件";
+
         echo "<br />";
-        if(!$request->session()->exists('user_name')){
-            return redirect('/login');
-        }*/
+        $time=date("H");
+//        dd($time); //20
+        if($time<9 || $time>17)
+        {
+            //9点之前 五点之后拒绝进入
+            return redirect('/goods/index');
+//            return redirect('/goods/index');
+        }
         return $next($request);
     }
 }
